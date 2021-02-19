@@ -2,7 +2,7 @@
 
 ## Author
 
-
+Skylar Peters
 
 ## Description
 
@@ -47,6 +47,10 @@ Don't forget that you must have a base case for your recursive method or you wil
 
 ## Outside Resources Used
 
-
+Used to help transpose: https://www.codegrepper.com/code-examples/csharp/c%23+transpose+2d+array
+Used to help print the array: https://stackoverflow.com/questions/24094093/how-to-print-2d-array-to-console-in-c-sharp/31691625
+Answer by Devrim A.(225 upvotes) helped to refresh my memory on using ref: https://stackoverflow.com/questions/748062/return-multiple-values-to-a-method-caller
 
 ## Known Problems, Issues, And/Or Errors in the Program
+
+There might be a better way to organize or arrange the X and Y values in the recursive method, not sure.
