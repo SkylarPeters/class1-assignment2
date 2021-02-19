@@ -1,4 +1,8 @@
-﻿using System;
+﻿// Skylar Peters
+// CIS 237
+// 2/19/2021
+
+using System;
 
 namespace cis237_assignment2
 {
@@ -75,9 +79,7 @@ namespace cis237_assignment2
         /// <returns>transposedMaze</returns>
         static char[,] transposeMaze(char[,] mazeToTranspose)
         {
-            //Write code her to create a transposed maze.
-            //return new char[1, 1];
-            // 
+            //Write code here to create a transposed maze.
             char[,] result = new char[mazeToTranspose.GetLength(0), mazeToTranspose.GetLength(1)];
 
             for (int x = 0; x < mazeToTranspose.GetLength(0); ++x)
