@@ -20,9 +20,9 @@ namespace cis237_assignment2
             // Do work needed to use mazeTraversal recursive call and solve the maze.
             int X = xStart;
             int Y = yStart;
-            mazeTraversal(maze, X, Y);
+            bool stop = false;
+            mazeTraversal(maze, X, Y, ref stop);
         }
-
 
         /// <summary>
         /// This should be the recursive method that gets called to solve the maze.
@@ -30,48 +30,55 @@ namespace cis237_assignment2
         /// This is only a very small starting point.
         /// More than likely you will need to pass in at a minimum the current position
         /// in X and Y maze coordinates. EX: mazeTraversal(int currentX, int currentY)
+        /// 
+        /// There might be a better/cleaner way to set up the X and Y values for
+        /// this method, but I stopped messing with them when I got it to start working.
         /// </summary>
-        private void mazeTraversal(char[,] maze, int currentX, int currentY)
+        private void mazeTraversal(char[,] maze, int currentY, int currentX, ref bool stop)
         {
-            // Implement maze traversal recursive call
-
             // Replace position with X
-            maze[currentX, currentY] = char.Parse("X");
+            maze[currentY, currentX] = char.Parse("X");
 
             // Display the maze
             PrintMaze(maze);
 
             // Check if exit is reached
-            if (currentX == maze.GetLength(0) || currentY == maze.GetLength(1))
+            if (currentY == (maze.GetLength(0) - 1) || currentX == (maze.GetLength(1) - 1))
             {
+                Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine("The maze has been solved.");
+                Console.ForegroundColor = ConsoleColor.White;
+                stop = true;
             }
-
-            // 
-            if (maze[(currentX - 1), currentY] == '.')
+            else
             {
-                mazeTraversal(maze, currentX - 1, currentY);
+                // Move left if possible
+                if (maze[currentY, (currentX - 1)] == '.' && stop != true)
+                {
+                    mazeTraversal(maze, currentY, currentX - 1, ref stop);
+                }
+
+                // Move right if possible
+                if (maze[currentY, (currentX + 1)] == '.' && stop != true)
+                {
+                    mazeTraversal(maze, currentY, currentX + 1, ref stop);
+                }
+
+                // Move up if possible
+                if (maze[(currentY - 1), currentX] == '.' && stop != true)
+                {
+                    mazeTraversal(maze, currentY - 1, currentX, ref stop);
+                }
+
+                // Move down if possible
+                if (maze[(currentY + 1), currentX] == '.' && stop != true)
+                {
+                    mazeTraversal(maze, currentY + 1, currentX, ref stop);
+                }
+
+                // Dead end/No path
+                maze[currentY, currentX] = char.Parse("O");
             }
-
-            // 
-            if (maze[(currentX + 1), currentY] == '.')
-            {
-                mazeTraversal(maze, currentX - 1, currentY);
-            }
-
-            // 
-            if (maze[currentX, (currentY - 1)] == '.')
-            {
-                mazeTraversal(maze, currentX - 1, currentY);
-            }
-
-            // 
-            if (maze[currentX, (currentY + 1)] == '.')
-            {
-                mazeTraversal(maze, currentX - 1, currentY);
-            }
-
-
         }
 
         /// <summary>

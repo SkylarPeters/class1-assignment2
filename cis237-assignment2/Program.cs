@@ -42,11 +42,16 @@ namespace cis237_assignment2
             // Solve the original maze.
             mazeSolver.SolveMaze(maze1, X_START, Y_START);
 
+            // Stop after solving the first maze
             Console.WriteLine();
+            Console.WriteLine("Enter any Key to Solve the Transposed Maze.");
+            Console.ReadLine();
 
             // Solve the transposed maze.
             mazeSolver.SolveMaze(maze2, X_START, Y_START);
 
+            // Hold console open to show transposed maze solution
+            Console.ReadLine();
         }
 
         /// <summary>
