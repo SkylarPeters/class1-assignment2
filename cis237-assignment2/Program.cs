@@ -19,8 +19,8 @@ namespace cis237_assignment2
             // The first maze that needs to be solved.
             // Note: You may want to make a smaller version to test and debug with.
             // You don't have to, but it might make your life easier.
-            char[,] maze1 =
-            { { '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#' },
+            char[,] maze1 = { 
+            { '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#' },
             { '#', '.', '.', '.', '#', '.', '.', '.', '.', '.', '.', '#' },
             { '#', '.', '#', '.', '#', '.', '#', '#', '#', '#', '.', '#' },
             { '#', '#', '#', '.', '#', '.', '.', '.', '.', '#', '.', '#' },
@@ -41,6 +41,8 @@ namespace cis237_assignment2
 
             // Solve the original maze.
             mazeSolver.SolveMaze(maze1, X_START, Y_START);
+
+            Console.WriteLine();
 
             // Solve the transposed maze.
             mazeSolver.SolveMaze(maze2, X_START, Y_START);
@@ -69,7 +71,19 @@ namespace cis237_assignment2
         static char[,] transposeMaze(char[,] mazeToTranspose)
         {
             //Write code her to create a transposed maze.
-            return new char[1, 1];
+            //return new char[1, 1];
+            // 
+            char[,] result = new char[mazeToTranspose.GetLength(0), mazeToTranspose.GetLength(1)];
+
+            for (int x = 0; x < mazeToTranspose.GetLength(0); ++x)
+            {
+                for (int y = 0; y < mazeToTranspose.GetLength(1); ++y)
+                {
+                    result[y, x] = mazeToTranspose[x, y];
+                }
+            }
+            // Return the new array
+            return result;
         }
     }
 }
