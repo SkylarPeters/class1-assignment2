@@ -3,6 +3,7 @@
 // 2/19/2021
 
 using System;
+using System.Threading;
 
 namespace cis237_assignment2
 {
@@ -56,7 +57,7 @@ namespace cis237_assignment2
                 // When exit is reached, display that the maze has been solved(in green)
                 Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine("The maze has been solved.");
-                Console.ForegroundColor = ConsoleColor.White;
+                Console.ForegroundColor = ConsoleColor.Gray;
 
                 // Also return stop as true in order to halt continued recursion.
                 stop = true;
@@ -112,6 +113,9 @@ namespace cis237_assignment2
                 Console.WriteLine();
             }
             Console.WriteLine();
+
+            // Pauses the code for half a second so each step in the maze can be seen.
+            Thread.Sleep(500);
         }
     }
 }
